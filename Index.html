@@ -1,0 +1,67 @@
+// File: Dashboard.jsx
+import React, { useState, useEffect } from "react";
+import { Line, Bar, Pie } from "react-chartjs-2";
+import "chart.js/auto";
+
+const Dashboard = () => {
+  const [trafficData, setTrafficData] = useState({});
+  const [revenueData, setRevenueData] = useState({});
+  const [contentData, setContentData] = useState({});
+  const [trendData, setTrendData] = useState({});
+
+  // Mock API simulation for real-time data (replace with real endpoints)
+  useEffect(() => {
+    const fetchData = () => {
+      setTrafficData({
+        labels: ["US", "India", "UK", "Spain", "Germany"],
+        datasets: [
+          {
+            label: "Visitors",
+            data: [1200, 900, 600, 400, 300],
+            backgroundColor: ["#4f46e5", "#e11d48", "#f59e0b", "#10b981", "#3b82f6"],
+          },
+        ],
+      });
+
+      setRevenueData({
+        labels: ["AdSense", "Affiliate", "Paid Courses"],
+        datasets: [
+          {
+            label: "Revenue ($)",
+            data: [1200, 800, 1500],
+            backgroundColor: ["#4f46e5", "#f59e0b", "#10b981"],
+          },
+        ],
+      });
+
+      setContentData({
+        labels: ["Blog Posts", "Videos", "Reels", "Courses"],
+        datasets: [
+          {
+            label: "Engagement",
+            data: [3000, 2500, 1800, 1200],
+            backgroundColor: ["#3b82f6", "#4f46e5", "#10b981", "#f59e0b"],
+          },
+        ],
+      });
+
+      setTrendData({
+        labels: ["AI Trends", "Tech", "Marketing", "Finance", "Health"],
+        datasets: [
+          {
+            label: "Predicted Traffic",
+            data: [500, 700, 400, 600, 300],
+            backgroundColor: "#4f46e5",
+          },
+        ],
+      });
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 5000); // Update every 5 sec
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <h1 className="
