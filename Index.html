@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Solar Global</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🌞 AI Solar Global (Free)</h1>
+
+<label>Country:</label>
+<select id="country">
+  <option value="india">India</option>
+  <option value="usa">USA</option>
+  <option value="uae">UAE</option>
+</select>
+
+<label>Monthly Electricity Bill:</label>
+<input type="number" id="bill">
+
+<label>Roof Area (sq.ft):</label>
+<input type="number" id="roof">
+
+<button onclick="runAI()">Check Solar</button>
+
+<pre id="output"></pre>
+
+<script src="data/countryConfig.js"></script>
+<script src="logic/solarLogic.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
