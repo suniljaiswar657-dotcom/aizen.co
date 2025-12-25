@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARMA - Learn. Earn. Grow.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #00c9ff;
+            --dark: #121212;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(45deg, #00c9ff, #92fe9d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        
+        /* Glowing Button */
+        .btn-glow {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(106, 17, 203, 0.4);
+        }
+        
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(106, 17, 203, 0.7);
+        }
+        
+        /* Glass Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            transition: transform 0.3s;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(106, 17, 203, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(37, 117, 252, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 40% 80%, rgba(0, 201, 255, 0.1) 0%, transparent 20%);
+        }
+        
+        /* Challenge Card */
+        .challenge-card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border-radius: 15px;
+            border-left: 5px solid #00c9ff;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        /* Badge Animation */
+        .badge-animate {
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Leaderboard */
+        .leaderboard-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 8px 0;
+            padding: 12px 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .leaderboard-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #00c9ff;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00c9ff; }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-text { font-size: 2.5rem; }
+            .glass-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px);">
+        <div class="container">
+            <a class="navbar-brand gradient-text" href="#" style="font-size: 1.8rem; font-weight: bold;">
+                <i class="fas fa-crown me-2"></i>KARMA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#challenge">Today's Challenge</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#leaderboard">Leaderboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link btn-glow ms-2" href="#join">Join Free</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="container py-5 mt-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="hero-text gradient-text display-3 fw-bold mb-4 typewriter">
+                    Skill Up. Level Up. Get Paid.
+                </h1>
+                <p class="lead mb-4" style="font-size: 1.3rem;">
+                    Daily 30-minute challenges that give you <span class="text-warning">real skills</span>, 
+                    <span class="text-info">verifiable badges</span>, and 
+                    <span class="text-success">real money opportunities</span>.
+                </p>
+                
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <div class="text-center">
+                        <h2 class="fw-bold gradient-text">15,000+</h2>
+                        <p>Skills Learned</p>
+                    </div>
+                    <div class="text-center">
+                        <h2 class="fw-bold gradient-text">₹2.5L+</h2>
+                        <p>Earned by Users</p>
+                    </div>
+                    <div class="text-center">
+                        <h2 class="fw-bold gradient-text">50+</h2>
+                        <p>Companies Hiring</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#join" class="btn btn-glow btn-lg">
+                        <i class="fas fa-bolt me-2"></i> Start Free Trial
+                    </a>
+                    <a href="#challenge" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-play-circle me-2"></i> Try Today's Challenge
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 text-center">
+                <img src="https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg" 
+                     class="img-fluid rounded-circle glass-card" 
+                     style="max-height: 500px; border: 3px solid #00c9ff;"
+                     alt="KARMA Platform">
+            </div>
+        </div>
+    </section>
+
+    <!-- Today's Challenge -->
+    <section id="challenge" class="container py-5">
+        <h2 class="text-center gradient-text mb-5">
+            <i class="fas fa-trophy me-2"></i> Today's Challenge
+            <span class="badge bg-danger ms-2">Live</span>
+        </h2>
+        
+        <div class="challenge-card">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3 class="fw-bold">AI-Powered Resume Rewrite</h3>
+                    <p class="mb-2"><i class="fas fa-clock text-info"></i> Time: 25 minutes</p>
+                    <p class="mb-2"><i class="fas fa-coins text-warning"></i> Reward: 500 Karma Points + Resume Expert Badge</p>
+                    <p class="mb-3"><i class="fas fa-tools"></i> Tools Needed: ChatGPT + Google Docs</p>
+                    
+                    <div class="mb-3">
+                        <h5>Steps:</h5>
+                        <ol>
+                            <li>Take your old resume (or create a dummy one)</li>
+                            <li>Use ChatGPT to rewrite each section professionally</li>
+                            <li>Optimize with keywords for ATS systems</li>
+                            <li>Design in Canva for visual appeal</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 text-center">
+                    <div class="badge-animate">
+                        <div class="glass-card" style="width: 150px; margin: auto;">
+                            <i class="fas fa-award" style="font-size: 3rem; color: gold;"></i>
+                            <p class="mt-2 fw-bold">Resume Expert</p>
+                        </div>
+                    </div>
+                    
+                    <p class="mt-3"><small>Complete challenge to unlock this badge</small></p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <!-- CHANGE THIS GOOGLE FORM LINK TO YOUR OWN -->
+                <a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform" 
+                   target="_blank" 
+                   class="btn btn-glow btn-lg">
+                   <i class="fas fa-paper-plane me-2"></i> Submit Your Work
+                </a>
+                <p class="mt-2 text-muted">Submission closes in <span id="countdown" class="text-warning fw-bold">23:59:59</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="container py-5">
+        <h2 class="text-center gradient-text mb-5">
+            <i class="fas fa-cogs me-2"></i> How KARMA Works
+        </h2>
+        
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="glass-card text-center h-100">
+                    <div class="circle-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(45deg, #6a11cb, #2575fc); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-bolt fa-2x"></i>
+                    </div>
+                    <h4>1. Daily Challenge</h4>
+                    <p>Get a new 30-minute task every day at 9 AM</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="glass-card text-center h-100">
+                    <div class="circle-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(45deg, #2575fc, #00c9ff); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-tools fa-2x"></i>
+                    </div>
+                    <h4>2. Build & Learn</h4>
+                    <p>Use AI tools + your creativity to complete it</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="glass-card text-center h-100">
+                    <div class="circle-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(45deg, #00c9ff, #92fe9d); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-award fa-2x"></i>
+                    </div>
+                    <h4>3. Earn Badges</h4>
+                    <p>Get verifiable certificates & digital badges</p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="glass-card text-center h-100">
+                    <div class="circle-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(45deg, #92fe9d, #ffe066); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-rupee-sign fa-2x"></i>
+                    </div>
+                    <h4>4. Get Rewards</h4>
+                    <p>Exchange points for cash, internships, jobs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard -->
+    <section id="leaderboard" class="container py-5">
+        <h2 class="text-center gradient-text mb-5">
+            <i class="fas fa-chart-line me-2"></i> This Week's Leaders
+        </h2>
+        
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="glass-card">
+                    <!-- Top 3 -->
+                    <div class="leaderboard-item d-flex justify-content-between align-items-center" style="background: linear-gradient(90deg, gold, transparent);">
+                        <div class="d-flex align-items-center">
+                            <span class="fw-bold fs-4 me-3">🥇</span>
+                            <div>
+                                <h5 class="mb-0">Rohan Sharma</h5>
+                                <small class="text-muted">Completed 21 challenges</small>
+                            </div>
+                        </div>
+                        <span class="badge bg-success">12,540 Points</span>
+                    </div>
+                    
+                    <div class="leaderboard-item d-flex justify-content-between align-items-center" style="background: linear-gradient(90deg, silver, transparent);">
+                        <div class="d-flex align-items-center">
+                            <span class="fw-bold fs-4 me-3">🥈</span>
+                            <div>
+                                <h5 class="mb-0">Priya Patel</h5>
+                                <small class="text-muted">Completed 19 challenges</small>
+                            </div>
+                        </div>
+                        <span class="badge bg-success">11,200 Points</span>
+                    </div>
+                    
+                    <div class="leaderboard-item d-flex justify-content-between align-items-center" style="background: linear-gradient(90deg, #cd7f32, transparent);">
+                        <div class="d-flex align-items-center">
+                            <span class="fw-bold fs-4 me-3">🥉</span>
+                            <div>
+                                <h5 class="mb-0">Amit Kumar</h5>
+                                <small class="text-muted">Completed 18 challenges</small>
+                            </div>
+                        </div>
+                        <span class="badge bg-success">10,850 Points</span>
+                    </div>
+                    
+                    <!-- Rest -->
+                    <div id="leaderboardList"></div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn-outline-light" onclick="loadMoreLeaders()">
+                            <i class="fas fa-chevron-down me-2"></i> Load More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="container py-5">
+        <h2 class="text-center gradient-text mb-5">
+            <i class="fas fa-tags me-2"></i> Choose Your Plan
+        </h2>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="glass-card text-center h-100">
+                    <h4 class="gradient-text">FREE</h4>
+                    <h2 class="fw-bold my-3">₹0<span class="fs-6 text-muted">/month</span></h2>
+                    <ul class="list-unstyled text-start">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 1 Daily Challenge</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Basic Badges</li>
+                        <li class="mb-2"><i class="fas fa-times text-danger me-2"></i> No Certificates</li>
+                        <li class="mb-2"><i class="fas fa-times text-danger me-2"></i> No Priority Support</li>
+                    </ul>
+                    <a href="#join" class="btn btn-outline-light w-100">Get Started</a>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="glass-card text-center h-100" style="border: 2px solid #00c9ff; transform: scale(1.05);">
+                    <span class="badge bg-danger position-absolute" style="top: -10px; right: 20px;">MOST POPULAR</span>
+                    <h4 class="gradient-text">PRO</h4>
+                    <h2 class="fw-bold my-3">₹199<span class="fs-6 text-muted">/month</span></h2>
+                    <ul class="list-unstyled text-start">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 3 Daily Challenges</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Verified Certificates</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Priority Job Alerts</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 24/7 Support</li>
+                    </ul>
+                    <a href="#join" class="btn btn-glow w-100">Get Pro</a>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="glass-card text-center h-100">
+                    <h4 class="gradient-text">ELITE</h4>
+                    <h2 class="fw-bold my-3">₹499<span class="fs-6 text-muted">/month</span></h2>
+                    <ul class="list-unstyled text-start">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Unlimited Challenges</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> 1-on-1 Mentorship</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Guaranteed Internships</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Direct Company Access</li>
+                    </ul>
+                    <a href="#join" class="btn btn-outline-light w-100">Go Elite</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="glass-card text-center">
+                    <h2 class="gradient-text mb-4">Ready to Level Up Your Skills?</h2>
+                    <p class="mb-4">Join 5,000+ learners who are building future-proof careers</p>
+                    
+                    <!-- CHANGE THIS GOOGLE FORM LINK -->
+                    <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control glass-card" style="background: 
